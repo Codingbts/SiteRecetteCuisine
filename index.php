@@ -1,37 +1,50 @@
-<?php 
-$recette=[
+<?php
+
+$recipes = [
+    [
+        'title' => 'Cassoulet',
+        'recipe' => 'Etape 1 : des flageolets !',
+        'author' => 'mickael.andrieu@exemple.com',
+        'is_enabled' => true,
+    ],
     [
         'title' => 'Couscous',
-        'author' => 'Saad'
+        'recipe' => 'Etape 1 : de la semoule',
+        'author' => 'mickael.andrieu@exemple.com',
+        'is_enabled' => false,
     ],
     [
-        'title' => 'Burger',
-        'author' => 'Karim',
+        'title' => 'Escalope milanaise',
+        'recipe' => 'Etape 1 : prenez une belle escalope',
+        'author' => 'mathieu.nebra@exemple.com',
+        'is_enabled' => true,
     ],
-    [
-        'title' => 'Pizza',
-        'author' => 'Saber',
-    ],
-    [
-        'title' => 'Choucroute',
-        'author' => 'Marie',
-    ]
 ];
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recette cuisine</title>
+    <title>Affichage des recettes</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    >
 </head>
 <body>
-    <ul>
-        <?php for($lines=0; $lines<=3; $lines++):?>
-            <li><?php echo $recette[$lines]['title'] . ' ' . $recette[$lines]['author'];?></li>
-        <?php endfor;?>
-    </ul>
-    
+<div class="container">
+    <h1>Affichage des recettes</h1>
+    <!-- Boucle sur les recettes -->
+    <?php foreach ($recipes as $recipe) : ?>
+        <!-- si la clé existe et a pour valeur "vrai", on affiche -->
+        <?php if (array_key_exists('is_enabled', $recipe) && $recipe['is_enabled'] == true) : ?>
+            <article>
+                <h3><?php echo $recipe['title']; ?></h3>
+                <div><?php echo $recipe['recipe']; ?></div>
+                <i><?php echo $recipe['author']; ?></i>
+            </article>
+
+        <?php endif; ?>
+    <?php endforeach ?>
+</div>
 </body>
 </html>
