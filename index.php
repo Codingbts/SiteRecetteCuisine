@@ -1,5 +1,4 @@
 <?php
-
 $users = [
     [
         'full_name' => 'Mickaël Andrieu',
@@ -37,62 +36,61 @@ $recipes = [
         'author' => 'mathieu.nebra@exemple.com',
         'is_enabled' => true,
     ],
+    [
+        'title' => 'Salade Romaine',
+        'recipe' => 'Etape 1 : prenez une belle salade',
+        'author' => 'lorene.castor@exemple.com',
+        'is_enabled' => true,
+    ],
 ];
 
 function displayAuthor(string $authorEmail, array $users): string
-{
-    foreach ($users as $user) {
-        if ($authorEmail === $user['email']) {
-            return $user['full_name'] . '(' . $user['age'] . ' ans)';
+    {
+        //var_dump($authorEmail); die();
+        foreach($users as $user) {
+            if ($authorEmail === $user['email']) {
+                return $user['full_name'] . '(' . $user['age'] . ' ans)';
+            }
+            
         }
+        return 'Auteur inconnu';
     }
-}
-
 function isValidRecipe(array $recipe): bool
-{
-    if (array_key_exists('is_enabled', $recipe)) {
-        $isEnabled = $recipe['is_enabled'];
-    } else {
-        $isEnabled = false;
+    {
+        return $recipe['is_enabled'];
     }
-
-    return $isEnabled;
-}
-
-function getRecipes(array $recipes): array
-{
-    $valid_recipes = [];
-
-    foreach ($recipes as $recipe) {
-        if (isValidRecipe($recipe)) {
-            $valid_recipes[] = $recipe;
+function getRecipes(array $recipes) : array
+    {
+        $valid_recipes = [];
+        foreach($recipes as $recipe) {
+            if (isValidRecipe($recipe)) {
+                $valid_recipes[] = $recipe;
+            }
         }
-    }
-
     return $valid_recipes;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recettes de cuisine</title>
+    <title>Recettes de cuisine : Erreur</title>
     <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+rel="stylesheet"
+>
 </head>
-<body>
-<div class="container">
-    <h1>Liste des recettes de cuisine</h1>
 
-    <?php foreach (getRecipes($recipes) as $recipe) : ?>
+<body>
+    <div class="container">
+        <h1>Liste des recettes de cuisine</h1>
+        <?php foreach(getRecipes($recipes) as $recipe) : ?>
         <article>
-            <h3><?php echo $recipe['title']; ?></h3>
-            <div><?php echo $recipe['recipe']; ?></div>
-            <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
+            <h3><?php echo($recipe['title']); ?></h3>
+            <div><?php echo($recipe['recipe']); ?></div>
+            <i><?php echo(displayAuthor($recipe['author'], $users)); ?></i>
         </article>
-    <?php endforeach ?>
-</div>
+        <?php endforeach ?>
+    </div>
 </body>
 </html>
