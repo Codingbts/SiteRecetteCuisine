@@ -1,12 +1,3 @@
-<?php
-$getData = $_GET;
-
-if(!isset($_GET['email'])||!isset($_GET['message']))
-{
-    echo "il faut un email et un mot de passe !";
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +15,7 @@ if(!isset($_GET['email'])||!isset($_GET['message']))
     <div class="container">
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Contactez nous</h1>
-        <form action="submit-php.php" method="GET">
+        <form action="submit-php.php" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help">
