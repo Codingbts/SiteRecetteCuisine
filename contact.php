@@ -15,7 +15,7 @@
     <div class="container">
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Contactez nous</h1>
-        <form action="submit-php.php" method="POST">
+        <form action="submit-php.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help">
@@ -24,6 +24,10 @@
             <div class="mb-3">
                 <label for="message" class="form-label">Votre message</label>
                 <textarea class="form-control" placeholder="Exprimez vous" id="message" name="message"></textarea>
+            </div>
+            <div class="envoie de fichier">
+                <label for="screenshot">Importer un fichier</label>
+                <input type="file" name="screenshot" id="screenshot">
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
