@@ -16,8 +16,9 @@ require_once(__DIR__ . '/fonctions.php');
 
 
 <body class="d-flex flex-column min-vh-100">
+
     <div class="container">
-        <!-- inclusion de l'entête du site -->
+        
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Site de recettes</h1>
         <?php foreach (getRecipes($recipes) as $recipe) : ?>
@@ -28,7 +29,7 @@ require_once(__DIR__ . '/fonctions.php');
             </article>
         <?php endforeach ?>
     </div>
-    <!-- inclusion du bas de page du site -->
+   
     <?php require_once(__DIR__ . '/footer.php'); ?>
 </body>
 
