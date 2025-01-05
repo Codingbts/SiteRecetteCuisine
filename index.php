@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once(__DIR__ . '/variables.php');
 require_once(__DIR__ . '/fonctions.php');
 ?>
@@ -24,7 +25,7 @@ require_once(__DIR__ . '/fonctions.php');
 
         <h1>Site de recettes</h1>
         <?php require_once(__DIR__ . '/login.php'); ?>
-        <?php if (isset($loggerUser)): ?>
+        <?php if (isset($_SESSION['LOGGED_USER'])): ?>
             <?php foreach (getRecipes($recipes) as $recipe) : ?>
                 <article>
                     <h3><?php echo $recipe['title']; ?></h3>
@@ -32,7 +33,7 @@ require_once(__DIR__ . '/fonctions.php');
                     <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
                 </article>
             <?php endforeach ?>
-        <?php endif; ?>
+        <?php endif;?>
     </div>
     <?php require_once(__DIR__ . '/footer.php'); ?>
 </body>

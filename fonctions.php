@@ -33,3 +33,11 @@ function getRecipes(array $recipes): array
 }
 
 ?>
+
+<?php
+function redirectToUrl(string $url): never
+{
+    header("Location: {$url}");
+    exit();
+}
+?>
